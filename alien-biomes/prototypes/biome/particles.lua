@@ -137,7 +137,8 @@ Particles.particle_tints_dirt_sand = {
   cream = {234,216,179},
   brown = {162,117,88},
   beige = {178,164,138},
-  aubergine = {126,115,156}
+  aubergine = {126,115,156},
+  custom2 = {0,0,255},
 }
 for i, tint in pairs(Particles.particle_tints_dirt_sand) do
 local tint_2 = {
@@ -160,6 +161,7 @@ Particles.particle_tints_vegetation = {
   purple    = { r = 0.5, g = 0.2, b = 0.7, a = 1 },
   mauve     = { r = 0.3, g = 0.2, b = 0.7, a = 1 },
   blue      = { r = 0.2, g = 0.2, b = 0.7, a = 1 },
+  custom1   = { r = 0.0, g = 0.0, b = 1.0, a = 1 },
 }
 
 

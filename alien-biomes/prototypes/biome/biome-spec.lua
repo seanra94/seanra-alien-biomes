@@ -17,6 +17,7 @@ return {
       black      = { dimensions = {mineral_a = {1.0, 1.0}, mineral_b = {1.0, 1.0}} },
       grey       = { dimensions = {mineral_a = {1.0, 1.0}, mineral_b = {1.0, 1.0}} },
       white      = { dimensions = {mineral_a = {1.0, 1.0}, mineral_b = {1.0, 1.0}} },
+      custom2    = { dimensions = {mineral_a = {0.0, 1.0}, mineral_b = {0.0, 1.0}} },
     },
     variants = {
       ["dirt-1"]   = { transition = "beach", group = "dirt", dimensions = {distribution_moisture = {0.4, 0.6}} },
@@ -43,6 +44,7 @@ return {
       purple    = { dimensions = {vegetation_a = {1.0, 1.0}, vegetation_b = {1.0, 1.0}} },
       mauve     = { dimensions = {vegetation_a = {1.0, 1.0}, vegetation_b = {1.0, 1.0}} },
       blue      = { dimensions = {vegetation_a = {1.0, 1.0}, vegetation_b = {1.0, 1.0}} },
+      custom1   = { dimensions = {vegetation_a = {0.0, 1.0}, vegetation_b = {0.0, 1.0}} },
     },
     variants = {
       ["grass-1"]   = { transition = "beach", group = "grass" },

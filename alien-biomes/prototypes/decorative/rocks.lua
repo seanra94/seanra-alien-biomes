@@ -17,7 +17,8 @@ local tints = {
   cream = {234,216,179},
   brown = {162,117,88},
   beige = {178,164,138},
-  aubergine = {126,115,156}
+  aubergine = {126,115,156},
+  custom2 = {0,0,255},
 }
 for _, tint in pairs(tints) do
   local tint2 = {}
@@ -138,7 +139,7 @@ make_rock(
     {'dirt', 'grass'}), -- land types
     {
       'dustyrose',-- dirt
-      'green', 'turquoise' -- grass
+      'green', 'turquoise', 'custom1' -- grass
     }
   )),
   1
@@ -273,6 +274,19 @@ make_rock(
 )
 
 make_rock(
+  'custom2',
+  {
+    'rock-huge',
+    'rock-big',
+    'rock-medium',
+    'rock-small',
+    'rock-tiny'
+  },
+  list(any(tiles(),{'dirt-custom2', 'grass-mauve'})),
+  1
+)
+
+make_rock(
   'black',
   {
     'rock-huge',
@@ -297,7 +311,7 @@ make_rock(
     'rock-small',
     'rock-tiny'
   },
-  list(any(tiles(),{'dirt-grey', 'grass-blue', 'grass-turquoise'})),
+  list(any(tiles(),{'dirt-grey', 'grass-blue', 'grass-turquoise', 'grass-custom1'})),
   1
 )
 
@@ -353,7 +367,7 @@ make_rock(
   list(any(any(tiles(),
     {'dirt', 'grass'}), -- land types
     {
-      'purple', 'aubergine', -- dirt
+      'purple', 'aubergine', 'custom2', -- dirt
       'purple', -- grass
     }
   )),

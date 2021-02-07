@@ -29,6 +29,7 @@ data:extend{
 }
 local biome_settings = {
   "dirt-aubergine",
+  "dirt-custom2",
   "dirt-beige",
   "dirt-black",
   "dirt-brown",
@@ -51,7 +52,9 @@ local biome_settings = {
   "grass-turquoise",
   "grass-violet",
   "grass-yellow",
+  "grass-custom1",
   "sand-aubergine",
+  "sand-custom2",
   "sand-beige",
   "sand-black",
   "sand-brown",

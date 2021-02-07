@@ -202,7 +202,7 @@ local trees = {
       {r = 36, g = 106, b = 112},
       {r = 17, g = 80, b = 17},
     },
-    tags = {"purple", "turquoise", "blue"},
+    tags = {"purple", "turquoise", "blue", "custom1"},
     tile_restriction = grass,
   },
   {

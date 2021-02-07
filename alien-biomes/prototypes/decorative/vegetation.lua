@@ -83,6 +83,7 @@ local match = {
   ["mauve"] = "mauve",
   ["blue"] = "blue",
   ["turquoise"] = "turquoise",
+  ["custom1"] = "custom1",
 }
 local clockwise = {
   ["green"] = "olive",
@@ -95,6 +96,7 @@ local clockwise = {
   ["mauve"] = "blue",
   ["blue"] = "turquoise",
   ["turquoise"] = "green",
+  ["custom1"] = "custom1",
 }
 local clockwise2 = {
   ["green"] = "yellow",
@@ -107,6 +109,7 @@ local clockwise2 = {
   ["mauve"] = "turquoise",
   ["blue"] = "green",
   ["turquoise"] = "olive",
+  ["custom1"] = "custom1",
 }
 local anticlockwise = {
   ["green"] = "turquoise",
@@ -119,6 +122,7 @@ local anticlockwise = {
   ["mauve"] = "purple",
   ["blue"] = "mauve",
   ["turquoise"] = "blue",
+  ["custom1"] = "custom1",
 }
 
 local vegetation_map = {
@@ -145,6 +149,7 @@ local tints = {
   mauve = {100,98,202},
   blue = {51,89,166},
   turquoise = {79, 112, 81},
+  custom1 = {0, 0, 255},
 }
 for _, tint in pairs(tints) do
   local tint2 = {}
