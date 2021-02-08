@@ -127,18 +127,9 @@ local Particles = {}
 
 Particles.particle_tints_dirt_sand = {
   tan = {193,162,127},
-  white = {255,255,255},
-  grey = {177,183,187},
-  black = {50,50,50},
-  purple = {169,177,239},
-  red = {185,107,105},
-  violet = {165,107,161},
-  dustyrose = {180,148,137},
-  cream = {234,216,179},
   brown = {162,117,88},
-  beige = {178,164,138},
-  aubergine = {126,115,156},
-  custom2 = {0,0,255},
+  black = {50,50,50},
+  white = {200,200,200}
 }
 for i, tint in pairs(Particles.particle_tints_dirt_sand) do
 local tint_2 = {
@@ -151,17 +142,9 @@ Particles.particle_tints_dirt_sand[i] = tint_2
 end
 
 Particles.particle_tints_vegetation = {
-  turquoise = { r = 0.2, g = 0.7, b = 0.7, a = 1 },
   green     = { r = 0.2, g = 0.7, b = 0.2, a = 1 },
   olive     = { r = 0.5, g = 0.7, b = 0.2, a = 1 },
   yellow    = { r = 0.7, g = 0.7, b = 0.2, a = 1 },
-  orange    = { r = 0.7, g = 0.5, b = 0.2, a = 1 },
-  red       = { r = 0.7, g = 0.2, b = 0.2, a = 1 },
-  violet    = { r = 0.7, g = 0.2, b = 0.5, a = 1 },
-  purple    = { r = 0.5, g = 0.2, b = 0.7, a = 1 },
-  mauve     = { r = 0.3, g = 0.2, b = 0.7, a = 1 },
-  blue      = { r = 0.2, g = 0.2, b = 0.7, a = 1 },
-  custom1   = { r = 0.0, g = 0.0, b = 1.0, a = 1 },
 }
 
 

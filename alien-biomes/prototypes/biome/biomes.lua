@@ -35,7 +35,7 @@ biomes.add_tag = function(tile, tag)
   tile.tags[tag] = tag
 end
 
--- biomes.require_tag((biomes.require_tag(biomes.all_tiles(), {"dirt", "sand"}), {"aubergine", "purple", "violet", "mauve"})
+-- biomes.require_tag((biomes.require_tag(biomes.all_tiles(), {"dirt", "sand"}),)
 -- require ONE of many tags
 biomes.require_tag = function(tiles, tags)
   for tile_key, tile in pairs(tiles) do

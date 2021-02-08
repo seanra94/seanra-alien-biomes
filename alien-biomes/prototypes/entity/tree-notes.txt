@@ -68,33 +68,6 @@ Yellow:
   Bright Green (low aux)
   Greeny Brown
 
-Orange:
-  Bright yellow (low aux)
-  Red
-  Brown
-
-Red:
-  Orange, Red, Yellow
-
-Purple:
-  Deep purple
-  Pastel Purple (high aux)
-
-Violet:
-  Magenta (high aux)
-  Burgundy (high aux)
-  Pastel pink
-
-Blue:
-  Pastel Blue
-  Deep Blue (high aux)
-  Cyan (high aux)
-
-Turqoise:
-  Turqoise connifer
-  Teal (high aux)
-  Weeping dark green
-
 Desert trees
 Pink desert trees
 Red desert trees

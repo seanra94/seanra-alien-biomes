@@ -7,18 +7,7 @@ local tiles = alien_biomes.all_tiles
 
 local tints = {
   tan = {193,162,127},
-  white = {255,255,255},
-  grey = {177,183,187},
-  black = {135,135,135},
-  purple = {169,177,239},
-  red = {185,107,105},
-  violet = {165,107,161},
-  dustyrose = {180,148,137},
-  cream = {234,216,179},
   brown = {162,117,88},
-  beige = {178,164,138},
-  aubergine = {126,115,156},
-  custom2 = {0,0,255},
 }
 for _, tint in pairs(tints) do
   local tint2 = {}
@@ -138,41 +127,8 @@ make_rock(
   list(any(any(tiles(),
     {'dirt', 'grass'}), -- land types
     {
-      'dustyrose',-- dirt
-      'green', 'turquoise', 'custom1' -- grass
-    }
-  )),
-  1
-)
-
--- main rocks
-make_rock(
-  'dustyrose',
-  {
-    'rock-huge',
-    'rock-big',
-    'rock-medium',
-    'rock-small',
-    'rock-tiny'
-  },
-  list(any(tiles(),{'dirt-dustyrose', 'grass-violet'})),
-  1
-)
-
-make_rock(
-  'cream',
-  {
-    'rock-huge',
-    'rock-big',
-    'rock-medium',
-    'rock-small',
-    'rock-tiny'
-  },
-  list(any(any(tiles(),
-    {'dirt', 'grass'}), -- land types
-    {
-      'cream',-- dirt
-      'yellow' -- grass
+      'brown', 'tan', -- dirt
+      'green', 'olive', 'yellow' -- grass
     }
   )),
   1
@@ -190,145 +146,8 @@ make_rock(
   list(any(any(tiles(),
     {'dirt', 'grass'}), -- land types
     {
-      'brown',-- dirt
-      'orange' -- grass
-    }
-  )),
-  1
-)
-
-make_rock(
-  'beige',
-  {
-    'rock-huge',
-    'rock-big',
-    'rock-medium',
-    'rock-small',
-    'rock-tiny'
-  },
-  list(any(any(tiles(),
-    {'dirt', 'grass'}), -- land types
-    {
-      'beige',-- dirt
-      'olive' -- grass
-    }
-  )),
-  1
-)
-
-make_rock(
-  'red',
-  {
-    'rock-huge',
-    'rock-big',
-    'rock-medium',
-    'rock-small',
-    'rock-tiny'
-  },
-  list(any(any(tiles(),
-    {'dirt', 'grass'}), -- land types
-    {
-      'red',  -- dirt or grass
-    }
-  )),
-  1
-)
-
-make_rock(
-  'violet',
-  {
-    'rock-huge',
-    'rock-big',
-    'rock-medium',
-    'rock-small',
-    'rock-tiny'
-  },
-  list(any(tiles(),{'dirt-violet'})),
-  1
-)
-
-make_rock(
-  'purple',
-  {
-    'rock-huge',
-    'rock-big',
-    'rock-medium',
-    'rock-small',
-    'rock-tiny'
-  },
-  list(any(tiles(),{'dirt-purple'})),
-  1
-)
-
-make_rock(
-  'aubergine',
-  {
-    'rock-huge',
-    'rock-big',
-    'rock-medium',
-    'rock-small',
-    'rock-tiny'
-  },
-  list(any(tiles(),{'dirt-aubergine', 'grass-mauve'})),
-  1
-)
-
-make_rock(
-  'custom2',
-  {
-    'rock-huge',
-    'rock-big',
-    'rock-medium',
-    'rock-small',
-    'rock-tiny'
-  },
-  list(any(tiles(),{'dirt-custom2', 'grass-mauve'})),
-  1
-)
-
-make_rock(
-  'black',
-  {
-    'rock-huge',
-    'rock-big',
-    'rock-medium',
-    'rock-small',
-    'rock-tiny'
-  },
-  list(any(any(tiles(),
-    {'dirt', 'volcanic'}), -- land types
-    {'black', 'volcanic' }
-  )),
-  1
-)
-
-make_rock(
-  'grey',
-  {
-    'rock-huge',
-    'rock-big',
-    'rock-medium',
-    'rock-small',
-    'rock-tiny'
-  },
-  list(any(tiles(),{'dirt-grey', 'grass-blue', 'grass-turquoise', 'grass-custom1'})),
-  1
-)
-
-make_rock(
-  'white',
-  {
-    'rock-huge',
-    'rock-big',
-    'rock-medium',
-    'rock-small',
-    'rock-tiny'
-  },
-  list(any(any(tiles(),
-    {'dirt', 'frozen'}), -- land types
-    {
-      'white', -- dirt
-      'snow',
+      'brown', 'tan', -- dirt
+      'green', 'olive', 'yellow' -- grass
     }
   )),
   1
@@ -341,58 +160,8 @@ make_rock(
   list(any(any(tiles(),
     {'dirt', 'grass'}), -- land types
     {
-      'tan', 'brown', 'cream', 'beige', 'dustyrose',-- dirt
-      'green', 'olive', 'turquoise', 'yellow', 'orange', 'purple' -- grass
-    }
-  )),
-  1
-)
-
-make_rock(
-  'red',
-  { 'stone-decal' },
-  list(any(any(tiles(),
-    {'dirt', 'grass'}), -- land types
-    {
-      'red', 'violet', -- dirt
-      'red', 'violet', -- grass
-    }
-  )),
-  1
-)
-
-make_rock(
-  'purple',
-  { 'stone-decal' },
-  list(any(any(tiles(),
-    {'dirt', 'grass'}), -- land types
-    {
-      'purple', 'aubergine', 'custom2', -- dirt
-      'purple', -- grass
-    }
-  )),
-  1
-)
-
-make_rock(
-  'black',
-  { 'stone-decal' },
-  list(any(any(tiles(),
-    {'dirt'}), -- land types
-    {'black'}
-  )),
-  1
-)
-
-make_rock(
-  'white',
-  { 'stone-decal' },
-  list(any(any(tiles(),
-    {'dirt', 'grass', 'frozen'}), -- land types
-    {
-      'white', 'grey', -- dirt
-      'blue', 'mauve', -- grass
-      'snow',
+      'brown', 'tan', -- dirt
+      'green', 'olive', 'yellow' -- grass
     }
   )),
   1
@@ -405,61 +174,11 @@ make_rock(
   list(any(any(tiles(),
     {'dirt', 'sand', 'grass'}), -- land types
     {
-      'tan', 'brown', 'cream', 'beige', 'dustyrose',-- dirt
-      'green', 'olive', 'turquoise', 'yellow', 'orange', 'purple' -- grass
+      'brown', 'tan', -- dirt
+      'green', 'olive', 'yellow' -- grass
     }
   )),
   1
-)
-
-make_rock(
-  'red',
-  { 'sand-decal' },
-  list(any(any(tiles(),
-    {'dirt', 'sand', 'grass'}), -- land types
-    {
-      'red', 'violet', -- dirt
-      'red', 'violet', -- grass
-    }
-  )),
-  1
-)
-
-make_rock(
-  'purple',
-  { 'sand-decal' },
-  list(any(any(tiles(),
-    {'dirt', 'sand', 'grass'}), -- land types
-    {
-      'purple', 'aubergine', -- dirt
-      'purple', -- grass
-    }
-  )),
-  1
-)
-
-make_rock(
-  'black',
-  { 'sand-decal' },
-  list(any(any(tiles(),
-    {'dirt', 'sand', 'volcanic'}), -- land types
-    {'black', 'volcanic' }
-  )),
-  2
-)
-
-make_rock(
-  'white',
-  { 'sand-decal' },
-  list(any(any(tiles(),
-    {'dirt', 'sand', 'grass', 'frozen'}), -- land types
-    {
-      'white', 'grey', -- dirt
-      'blue', 'mauve', -- grass
-      'snow',
-    }
-  )),
-  2
 )
 
 -- sandy rocks and decals
@@ -473,69 +192,7 @@ make_rock(
   list(any(any(tiles(),
     {'sand'}), -- land types
     {
-      'tan', 'brown', 'cream', 'beige' -- dirt
-    }
-  )),
-  1
-)
-
-make_rock(
-  'red',
-  {
-    'sand-rock-big',
-    'sand-rock-medium',
-    'sand-rock-small',
-  },
-  list(any(any(tiles(),
-    {'sand'}), -- land types
-    {
-      'red', 'violet', 'dustyrose', -- dirt
-    }
-  )),
-  1
-)
-
-make_rock(
-  'purple',
-  {
-    'sand-rock-big',
-    'sand-rock-medium',
-    'sand-rock-small',
-  },
-  list(any(any(tiles(),
-    {'sand'}), -- land types
-    {
-      'purple', 'aubergine', -- dirt
-    }
-  )),
-  1
-)
-
-make_rock(
-  'black',
-  {
-    'sand-rock-big',
-    'sand-rock-medium',
-    'sand-rock-small',
-  },
-  list(any(any(tiles(),
-    {'sand'}), -- land types
-    {'black' }
-  )),
-  1
-)
-
-make_rock(
-  'white',
-  {
-    'sand-rock-big',
-    'sand-rock-medium',
-    'sand-rock-small',
-  },
-  list(any(any(tiles(),
-    {'sand'}), -- land types
-    {
-      'white', 'grey', -- dirt
+      'brown', 'tan', -- dirt
     }
   )),
   1
@@ -546,23 +203,7 @@ for color, data in pairs(alien_biomes.spec.mineral.axes) do
   make_rock(color, {'sand-dune-decal'}, list(any(any(tiles(),{'sand'}), {color} )), 4 )
 end
 
--- volcanic
-local volcanic_tiles = list(any(tiles(), {'volcanic'} ))
-make_rock(
-  'volcanic',
-  {
-    'rock-huge',
-    'rock-big',
-    'rock-medium',
-    'rock-small',
-    'rock-tiny',
-    'sand-decal',
-    'stone-decal'
-  },
-  volcanic_tiles,
-  2,
-  "black"
-)
+
 if data.raw['simple-entity']['rock-huge-volcanic'] then
   data.raw['simple-entity']['rock-huge-volcanic'].autoplace = {
     random_probability_penalty = 0.6, tile_restriction = volcanic_tiles,
