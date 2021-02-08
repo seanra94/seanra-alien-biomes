@@ -6,7 +6,7 @@ return {
     dimensions = { distribution_temperature = {0.84, 1.0} },
     axes = {
       brown      = { dimensions = {mineral_a = {0.5, 1.0}, mineral_b = {0.0, 0.5}} },
-      tan        = { dimensions = {mineral_a = {0.0, 0.5}, mineral_b = {0.0, 0.5}} },
+      tan        = { dimensions = {mineral_a = {0.0, 0.5}, mineral_b = {0.5, 1.0}} },
     },
     variants = {
       ["dirt-1"]   = { transition = "beach", group = "dirt", dimensions = {distribution_moisture = {0.3, 0.5}} },
@@ -15,9 +15,6 @@ return {
       ["dirt-4"]   = { transition = "beach", group = "dirt", dimensions = {distribution_moisture = {0.6, 1.0}} },
       ["dirt-5"]   = { transition = "beach", group = "dirt", dimensions = {distribution_moisture = {0.15, 0.3}}, beach_weight = 1  },
       ["dirt-6"]   = { transition = "beach", group = "dirt", dimensions = {distribution_moisture = {0.0, 0.15}}, beach_weight = 1  },
-      ["sand-1"]   = { transition = "beach", group = "sand", dimensions = {distribution_moisture = {0.0, 0.0}} },
-      ["sand-2"]   = { transition = "beach", group = "sand", dimensions = {distribution_moisture = {0.0, 0.0}} },
-      ["sand-3"]   = { transition = "beach", group = "sand", dimensions = {distribution_moisture = {0.0, 0.0}} },
     }
   },
   vegetation = {
@@ -25,7 +22,7 @@ return {
     axes = {
       green     = { dimensions = {vegetation_a = {0.0, 0.6}, vegetation_b = {0.0, 1.0}} },
       olive     = { dimensions = {vegetation_a = {0.6, 0.8}, vegetation_b = {0.0, 1.0}} },
-      yellow    = { dimensions = {vegetation_a = {0.8, 1.0}, vegetation_b = {0.5, 1.0}} },
+      yellow    = { dimensions = {vegetation_a = {0.8, 1.0}, vegetation_b = {0.0, 1.0}} },
     },
     variants = {
       ["grass-1"]   = { transition = "beach", group = "grass" },

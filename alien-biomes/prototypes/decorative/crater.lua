@@ -1,4 +1,4 @@
-local crater_tile_restriction = alien_biomes.list_tiles(alien_biomes.require_tag(alien_biomes.all_tiles(), {"dirt", "sand", "heat-1"}))
+local crater_tile_restriction = alien_biomes.list_tiles(alien_biomes.require_tag(alien_biomes.all_tiles(), {"dirt", "heat-1"}))
 local function autoplace_crater (max_probability, random_probability_penalty)
   return {
     max_probability = max_probability,

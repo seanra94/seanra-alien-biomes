@@ -180,9 +180,7 @@ data:extend({
       --return clamp_temperature(50 - coldspots + hotspots)
       local combined = base - coldspots + hotspots
       combined = noise.clamp(combined, -50, 110) -- slice off the lava peaks
-      local volcanic_area = noise.clamp(combined - 100, 0, 10)
-      local volcanic_hotspots = noise.clamp(0.5 + make_multioctave_noise_function(map.seed, 5, 6, 1.5, 0.5)(x,y,1,1/20), 0, 10) * volcanic_area * 4 -- 0 - 40
-      return clamp_temperature(combined + volcanic_hotspots)
+      return clamp_temperature(combined)
     end)
   },
   {

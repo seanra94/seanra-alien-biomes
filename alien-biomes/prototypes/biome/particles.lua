@@ -211,7 +211,7 @@ function Particles.add_tile_particles(biome)
       }
     end
 
-    if biome.group == "dirt" or biome.group == "sand" then
+    if biome.group == "dirt" then
       set_tint = Particles.particle_tints_dirt_sand[biome.axis]
     elseif biome.group == "vegetation" then
       set_tint = Particles.particle_tints_vegetation[biome.axis]

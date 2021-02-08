@@ -518,11 +518,6 @@ biomes.build_tiles = function ()
         tile_data.walking_sound = table.deepcopy(biomes.sounds.dirt)
         tile_data.walking_speed_modifier = 1
         tile_data.vehicle_friction_modifier = 1.4
-      elseif biome.group == "sand" then
-        tile_data.walking_sound = table.deepcopy(biomes.sounds.sand)
-        tile_data.walking_speed_modifier = 0.8
-        tile_data.vehicle_friction_modifier = 2
-        tile_data.pollution_absorption_per_second=0.0000025
       elseif biome.group == "frozen" then
         tile_data.walking_sound = table.deepcopy(biomes.sounds.snow)
         tile_data.walking_speed_modifier = 0.8
@@ -546,7 +541,7 @@ biomes.build_tiles = function ()
       -- Particles
       Particles.add_tile_particles(biome)
 
-      if biome.group == "dirt" or biome.group == "sand" or biome.group == "frozen" then
+      if biome.group == "dirt" or biome.group == "frozen" then
         for _, character in pairs(data.raw.character) do
           if character.footprint_particles and character.footprint_particles[1] and character.footprint_particles[1].tiles then
             table.insert(character.footprint_particles[1].tiles, biome_name)
