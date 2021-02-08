@@ -79,27 +79,79 @@ local function make_multioctave_noise_function(seed0,seed1,octaves,octave_output
   end
 end
 
--- Inputs to multi-octave noise to replicate 0.15 terrain
--- (ignoring that it won't match due to shifting having changed)
--- Roughness scale=0.125000, seed=9, amplitude=0.325000
--- Elevation scale=0.500000, seed=8, amplitude=6000.000000
+local function generate_noise(minimum, maximum, x_offset, y_offset, unique_seed, x, y, title, map)
+  local average = (maximum + minimum) / 2
+  local range = maximum - average
+  --(seed0,seed1,octaves,octave_output_scale_multiplier = 2,octave_input_scale_multiplier = 1/2,output_scale0 = 1,input_scale0 = 1)
 
--- TODO: Use actual noise layer indexes for seeds instead of hard-coding
+  local noise_XL = 16 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
+    4, -- octaves
+    1.75, -- octave_output_scale_multiplier
+    1, -- octave_input_scale_multiplier
+    1, -- output_scale0
+    1 -- input_scale0
+    )(x * 0.05, y * 0.05, 1/32, 1/20), -1, 1)
+
+    local noise_L = 8 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
+    3, -- octaves
+    1, -- octave_output_scale_multiplier
+    1, -- octave_input_scale_multiplier
+    1, -- output_scale0
+    1 -- input_scale0
+    )(x * 0.1, y * 0.1, 1/32, 1/20), -1, 1)
+
+  local noise_M = 4 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
+    2, -- octaves
+    1, -- octave_output_scale_multiplier
+    1, -- octave_input_scale_multiplier
+    1, -- output_scale0
+    1 -- input_scale0
+    )(x * 0.5, y *  0.5, 1/32, 1/20), -1, 1)
+
+  local noise_S = 2 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
+    1, -- octaves
+    1, -- octave_output_scale_multiplier
+    1, -- octave_input_scale_multiplier
+    1, -- output_scale0
+    1 -- input_scale0
+    )(x * 1, y *  1, 1/32, 1/20), -1, 1)
+
+  local noise_XS = 1 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
+    1, -- octaves
+    1, -- octave_output_scale_multiplier
+    1, -- octave_input_scale_multiplier
+    1, -- output_scale0
+    1 -- input_scale0
+    )(x * 2, y *  2, 1/32, 1/20), -1, 1)
+
+    local base = average + range * noise.clamp(0.25 * make_multioctave_noise_function(map.seed, 5,
+    6, -- octaves
+    1.75, -- octave_output_scale_multiplier
+    1, -- octave_input_scale_multiplier
+    1, -- output_scale0
+    1 -- input_scale0
+    )(x * 0.01, y * 0.01, 1/32, 1/20), -1, 1)
+    
+  base = noise.clamp(base, minimum, maximum)
+  local combined = base + noise_XL + noise_L + noise_M + noise_S + noise_XS
+  combined = noise.clamp(combined, minimum, maximum)
+  return combined
+end
+
+
 
 local function clamp_moisture(raw_moisture)
   return noise.clamp(raw_moisture, 0, 1)
 end
 
 local function clamp_temperature(raw_temperature)
-  return noise.clamp(raw_temperature, -20, 150)
+  return noise.clamp(raw_temperature, -50, 150)
 end
 
 local function clamp_aux(raw_aux)
   return noise.clamp(raw_aux, 0, 1)
 end
 
-local average_sea_level_temperature = 15
-local elevation_temperature_gradient = 0 -- -0.5 might be a good value to start with if you want to try correlating temperature with elevation
 
 data:extend({
   {
@@ -145,89 +197,8 @@ data:extend({
     intended_property = "temperature",
     expression = noise.define_noise_function( function(x,y,tile,map)
 
-      -- values range from 0 to 6
-      local cold = 6
-      local hot = 6
-
-      -- make base noise with the frequencey half of the average of the hot and cold scale
-      local base_x = x
-      local base_y = y + 40000
-
-      local average = 50 - 125 * cold / 6 + 125 * hot / 6 -- -5 to 150
-      local range = 50 * (noise.clamp(cold, 0, 1) / 2 + cold / 10) + 50 * (noise.clamp(hot, 0, 1) / 2 + hot / 10)
-      --(seed0,seed1,octaves,octave_output_scale_multiplier = 2,octave_input_scale_multiplier = 1/2,output_scale0 = 1,input_scale0 = 1)
-      local base = average + range * noise.clamp(0.25 * make_multioctave_noise_function(map.seed, 5,
-        6, -- octaves
-        1.75, -- octave_output_scale_multiplier
-        1, -- octave_input_scale_multiplier
-        1, -- output_scale0
-        1 -- input_scale0
-        )(base_x * 0.01,base_y * 0.01,1/32,1/20), -1, 1)
-
-      local noise_XL = 16 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
-        4, -- octaves
-        1.75, -- octave_output_scale_multiplier
-        1, -- octave_input_scale_multiplier
-        1, -- output_scale0
-        1 -- input_scale0
-        )(base_x * 0.05,base_y * 0.05, 1/32,1/20), -1, 1)
-
-        local noise_L = 8 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
-        3, -- octaves
-        1, -- octave_output_scale_multiplier
-        1, -- octave_input_scale_multiplier
-        1, -- output_scale0
-        1 -- input_scale0
-        )(base_x * 0.1,base_y * 0.1, 1/32,1/20), -1, 1)
-
-      local noise_M = 4 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
-        2, -- octaves
-        1, -- octave_output_scale_multiplier
-        1, -- octave_input_scale_multiplier
-        1, -- output_scale0
-        1 -- input_scale0
-        )(base_x * 0.5,base_y *  0.5,1/32,1/20), -1, 1)
-
-      local noise_S = 2 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
-        1, -- octaves
-        1, -- octave_output_scale_multiplier
-        1, -- octave_input_scale_multiplier
-        1, -- output_scale0
-        1 -- input_scale0
-        )(base_x * 1,base_y *  1,1/32,1/20), -1, 1)
-
-      local noise_XS = 1 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
-        1, -- octaves
-        1, -- octave_output_scale_multiplier
-        1, -- octave_input_scale_multiplier
-        1, -- output_scale0
-        1 -- input_scale0
-        )(base_x * 2,base_y *  2,1/32,1/20), -1, 1)
-
-
-      base = noise.clamp(base, -50, 150) -- slice off the lava peaks
-      local combined = base + noise_XL + noise_L + noise_M + noise_S + noise_XS
-      combined = noise.clamp(combined, -50, 150) -- slice off the lava peaks
-
-
-      return clamp_temperature(combined)
-
-     -- local hot_x = x * noise.var("control-setting:hot:frequency:multiplier") + 40000
-     -- local hot_y = y * noise.var("control-setting:hot:frequency:multiplier")
-     -- local hotspots  = (noise.clamp(hot,  0, 1) / 2 + hot  / 10) * 40 * noise.clamp(-0.45 + hot /6
-     --   + make_multioctave_noise_function(map.seed, 5, 10, 1.5, 0.5)(hot_x,hot_y,1/8,1/20), 0, 4)
-
-    --  local cold_x = x * noise.var("control-setting:cold:frequency:multiplier") - 40000
-    --  local cold_y = y * noise.var("control-setting:cold:frequency:multiplier")
-    --  local coldspots = (noise.clamp(cold, 0, 1) / 2 + cold / 10) * 50 * noise.clamp(-0.45 + cold/6
-    --    + make_multioctave_noise_function(map.seed, 5, 10, 1.5, 0.5)(cold_x,cold_y,1/30,1/20), 0, 4)
-
-      --return clamp_temperature(base)
-      --return clamp_temperature(50 - coldspots + hotspots)
-  --    local combined = base - coldspots + hotspots
-  --    combined = noise.clamp(combined, -50, 110) -- slice off the lava peaks
-  --    return clamp_temperature(combined)
-
+      local temperature_noise = generate_noise(-50, 150, 30000, 0, 20, x, y, title, map)
+      return temperature_noise
 
     end)
   },
