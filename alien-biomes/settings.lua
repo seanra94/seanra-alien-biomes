@@ -35,11 +35,7 @@ local biome_settings = {
   "grass-olive",
   "grass-yellow",
   "sand-brown",
-  "sand-tan",
-  "volcanic-blue",
-  "volcanic-green",
-  "volcanic-orange",
-  "volcanic-purple",
+  "sand-tan"
 }
 for _, setting in pairs(biome_settings) do
   data:extend({{

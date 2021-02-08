@@ -215,8 +215,6 @@ function Particles.add_tile_particles(biome)
       set_tint = Particles.particle_tints_dirt_sand[biome.axis]
     elseif biome.group == "vegetation" then
       set_tint = Particles.particle_tints_vegetation[biome.axis]
-    elseif biome.group == "volcanic" then
-      set_tint = Particles.particle_tints_dirt_sand["black"]
     elseif biome.group == "frozen" then
       set_tint = Particles.particle_tints_dirt_sand["white"]
     end

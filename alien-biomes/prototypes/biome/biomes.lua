@@ -410,7 +410,9 @@ biomes.build_tiles = function ()
       data.raw.tile[_].autoplace = nil
     end
   end
+
   local layer = 0
+  
   for biome_name, biome in pairs(biomes.collapsed) do
     local include_tile = true
     local setting_name = "alien-biomes-include-" .. biome.group
@@ -531,22 +533,6 @@ biomes.build_tiles = function ()
         or biome.variant == "snow-9" then -- ice
           tile_data.walking_sound = table.deepcopy(biomes.sounds.ice)
         end
-      elseif biome.group == "volcanic" then
-        tile_data.walking_sound = table.deepcopy(biomes.sounds.dirt)
-        tile_data.pollution_absorption_per_second=0.0000025
-        if biome.variant == "heat-1" then
-          tile_data.walking_speed_modifier = 1
-          tile_data.vehicle_friction_modifier = 2
-        elseif biome.variant == "heat-2" then
-          tile_data.walking_speed_modifier = 0.9
-          tile_data.vehicle_friction_modifier = 4
-        elseif biome.variant == "heat-3" then
-          tile_data.walking_speed_modifier = 0.8
-          tile_data.vehicle_friction_modifier = 8
-        elseif biome.variant == "heat-4" then
-          tile_data.walking_speed_modifier = 0.7
-          tile_data.vehicle_friction_modifier = 16
-        end
       end
       if tile_data.walking_speed_modifier < 1 then
         local mult = settings.startup['tile-speed-reduction'].value / 100
@@ -560,14 +546,13 @@ biomes.build_tiles = function ()
       -- Particles
       Particles.add_tile_particles(biome)
 
-      if biome.group == "dirt" or biome.group == "sand" or biome.group == "volcanic" or biome.group == "frozen" then
+      if biome.group == "dirt" or biome.group == "sand" or biome.group == "frozen" then
         for _, character in pairs(data.raw.character) do
           if character.footprint_particles and character.footprint_particles[1] and character.footprint_particles[1].tiles then
             table.insert(character.footprint_particles[1].tiles, biome_name)
           end
         end
       end
-
     end
   end
 end

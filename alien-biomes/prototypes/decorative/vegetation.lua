@@ -6,8 +6,8 @@ local exclude = alien_biomes.exclude_tags
 local list = alien_biomes.list_tiles
 local tiles = alien_biomes.all_tiles
 
-local not_harsh = list(exclude(tiles(), {'frozen', 'volcanic', 'sand'}))
-local not_extreme = list(exclude(tiles(), {'frozen', 'volcanic'}))
+local not_harsh = list(exclude(tiles(), {'frozen', 'sand'}))
+local not_extreme = list(exclude(tiles(), {'frozen'}))
 local not_frozen = list(exclude(tiles(), {'frozen'}))
 local not_ice = list(exclude(tiles(), {'frozen'}))
 

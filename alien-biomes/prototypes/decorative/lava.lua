@@ -432,27 +432,3 @@ local lava_decal_base = {
     },]]--
   },
 }
-local variants = { }
-if settings.startup["alien-biomes-include-volcanic-orange"].value ~= "Disabled" then
-  table.insert(variants, "orange")
-end
-if settings.startup["alien-biomes-include-volcanic-green"].value ~= "Disabled"  then
-  table.insert(variants, "green")
-end
-if settings.startup["alien-biomes-include-volcanic-blue"].value ~= "Disabled"  then
-  table.insert(variants, "blue")
-end
-if settings.startup["alien-biomes-include-volcanic-purple"].value ~= "Disabled"  then
-  table.insert(variants, "purple")
-end
-local heats = {"heat-2", "heat-3", "heat-4"}
-for _, variant in pairs(variants) do
-  local lava = table.deepcopy(lava_decal_base)
-  lava.name = lava.name .. "-" .. variant
-  lava.autoplace.tile_restriction = {}
-  for _, heat in pairs(heats) do
-    table.insert(lava.autoplace.tile_restriction, "volcanic-" .. variant .. "-" .. heat)
-  end
-  data_util.replace_filenames_recursive(lava.pictures, "|color|", variant)
-  data:extend({lava})
-end

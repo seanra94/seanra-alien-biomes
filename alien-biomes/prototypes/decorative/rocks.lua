@@ -108,7 +108,6 @@ local make_rock = function(name, base_names, tile_restriction, multiplier, color
 
       --rock.localised_name = {"alien-biomes.doublestring", {"alien-biomes.".. color}, {"entity-name.rock"} }
       rock.localised_name = {"entity-name.rock"}
-      -- volcanic has generally more rocks
       data:extend({rock})
     end
   end
@@ -201,69 +200,4 @@ make_rock(
 -- dune
 for color, data in pairs(alien_biomes.spec.mineral.axes) do
   make_rock(color, {'sand-dune-decal'}, list(any(any(tiles(),{'sand'}), {color} )), 4 )
-end
-
-
-if data.raw['simple-entity']['rock-huge-volcanic'] then
-  data.raw['simple-entity']['rock-huge-volcanic'].autoplace = {
-    random_probability_penalty = 0.6, tile_restriction = volcanic_tiles,
-    peaks = {
-      { influence = -0.2 },
-      { noise_layer = "grass1", influence = 0.4, noise_persistance = 0.8, noise_octaves_difference = -4},
-    }
-  }
-end
-if data.raw['simple-entity']['rock-big-volcanic'] then
-  data.raw['simple-entity']['rock-big-volcanic'].autoplace = {
-    random_probability_penalty = 0.6, tile_restriction = volcanic_tiles,
-    peaks = {
-      { influence = -0.1 },
-      { noise_layer = "grass1", influence = 0.4, noise_persistance = 0.8, noise_octaves_difference = -4},
-    }
-  }
-end
-if data.raw['optimized-decorative']['rock-medium-volcanic'] then
-data.raw['optimized-decorative']['rock-medium-volcanic'].autoplace = {
-  random_probability_penalty = 0.2, tile_restriction = volcanic_tiles,
-  peaks = {
-    { influence = 0.4 },
-    { noise_layer = "grass1", influence = 0.4, noise_persistance = 0.8, noise_octaves_difference = -4},
-  }
-}
-end
-if data.raw['optimized-decorative']['rock-small-volcanic'] then
-data.raw['optimized-decorative']['rock-small-volcanic'].autoplace = {
-  random_probability_penalty = 0.25, tile_restriction = volcanic_tiles,
-  peaks = {
-    { influence = 0.45 },
-    { noise_layer = "grass1", influence = 0.4, noise_persistance = 0.8, noise_octaves_difference = -4},
-  }
-}
-end
-if data.raw['optimized-decorative']['rock-tiny-volcanic'] then
-data.raw['optimized-decorative']['rock-tiny-volcanic'].autoplace = {
-  random_probability_penalty = 0.25, tile_restriction = volcanic_tiles,
-  peaks = {
-    { influence = 0.5 },
-    { noise_layer = "grass1", influence = 0.4, noise_persistance = 0.8, noise_octaves_difference = -4},
-  }
-}
-end
-if data.raw['optimized-decorative']['sand-decal-volcanic'] then
-data.raw['optimized-decorative']['sand-decal-volcanic'].autoplace = {
-  max_probability = 0.3, tile_restriction = volcanic_tiles,
-  peaks = {
-    { influence = 0.2 },
-    { noise_layer = "dirt-1", influence = 0.1, noise_persistance = 0.8, noise_octaves_difference = -4},
-  }
-}
-end
-if data.raw['optimized-decorative']['stone-decal-volcanic'] then
-data.raw['optimized-decorative']['stone-decal-volcanic'].autoplace = {
-  max_probability = 0.3, tile_restriction = volcanic_tiles,
-  peaks = {
-    { influence = 0.2 },
-    { noise_layer = "dirt-2", influence = 0.1, noise_persistance = 0.8, noise_octaves_difference = -4},
-  }
-}
 end

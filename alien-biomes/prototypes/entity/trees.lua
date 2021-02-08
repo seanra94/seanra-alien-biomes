@@ -132,7 +132,7 @@ local function tree_autoplace(treedata)
   }
   --log( treedata.name )
   --log( serpent.block( autoplace, {comment = false, numformat = '%1.8g' } ) )
-  local excludes = {"volcanic", "frozen"}
+  local excludes = {"frozen"}
   if treedata.water_band and treedata.water_band > 1 then
     table.insert(excludes, "sand")
   end
@@ -274,7 +274,7 @@ for _, treedata in pairs(trees_data) do
 end
 --data.raw.tree["tree-wetland-c"].variations = data.raw.tree["tree-05"].variations
 
-local not_extreme = alien_biomes.list_tiles(alien_biomes.exclude_tags(alien_biomes.all_tiles(), {"frozen", "volcanic"}))
+local not_extreme = alien_biomes.list_tiles(alien_biomes.exclude_tags(alien_biomes.all_tiles(), {"frozen"}))
 local not_super_extreme = alien_biomes.list_tiles(alien_biomes.exclude_tags(alien_biomes.all_tiles(), {"heat-4", "heat-3", "ice"}))
 
 local deadtrees = {

@@ -135,11 +135,6 @@ Version: 0.4.8
     - Changed tree selection priority so they are not in the way.
 
 ---------------------------------------------------------------------------------------------------
-Version: 0.4.7
-  Bugfixes:
-    - Fixed error if you disable all volcanic tiles.
-
----------------------------------------------------------------------------------------------------
 Version: 0.4.6
   Changes:
     - Put "out-of-map" tile back at layer index 0.
@@ -273,11 +268,6 @@ Version: 0.2.2
     - Updated for Factorio 0.15. High-resolution graphics will be in a future release. If continuing a 0.14 map there may be hard edges on newly generated chunks.
 
 ---------------------------------------------------------------------------------------------------
-Version: 0.1.7
-  Features:
-    - Adds 2 new tree types with completely original models (i.e. not a recolour of vanilla trees). Snow Fir Tree, and Volcanic Coral Tree.
-
----------------------------------------------------------------------------------------------------
 Version: 0.1.6
   Bugfixes:
     - Fixes placing landfill in deep water.
@@ -288,7 +278,6 @@ Version: 0.1.6
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.5
   Features:
-    - Added Volcanic Tileset.
 
   Bugfixes:
     - All biomes (including vanilla land tiles) now have the missing u and o variants, which means that you don't get the weirdness that can happen in vanilla when you place flooring near a biome transition.

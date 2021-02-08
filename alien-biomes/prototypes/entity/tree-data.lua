@@ -489,7 +489,7 @@ local trees = {
       {r = 17, g = 62, b = 5},
     },
     tags = {"green"},
-    tile_restriction = alien_biomes.list_tiles(alien_biomes.exclude_tags(alien_biomes.all_tiles(), {"ice", "volcanic", "sand"}))
+    tile_restriction = alien_biomes.list_tiles(alien_biomes.exclude_tags(alien_biomes.all_tiles(), {"ice", "sand"}))
   },
 
   -- palm

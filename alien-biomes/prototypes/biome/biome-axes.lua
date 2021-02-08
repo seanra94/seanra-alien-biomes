@@ -1,5 +1,4 @@
 -- distribution axes control biome type placement
---            volcanic
 -- sand    |    dirt    |    grass
 --             frozen
 -- other axes used for biome subtypes (mineral/vegetation colors)
@@ -15,16 +14,6 @@ return {
   },
   distribution_moisture = {
     dimension = "water",
-    low =   0,
-    high =  1,
-  },
-  volcanic_a = { -- heat
-    dimension = "temperature",
-    low =   100,
-    high =  150,
-  },
-  volcanic_b = { -- color: orange, green, blue, purple
-    dimension = "aux",
     low =   0,
     high =  1,
   },
