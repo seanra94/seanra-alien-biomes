@@ -3,10 +3,10 @@
 -- beach_weight defaults to -1
 return {
   mineral = { -- and sand
-    dimensions = { distribution_temperature = {0.99, 1.0} },
+    dimensions = { distribution_temperature = {0.8, 1.0} },
     axes = {
-      brown      = { dimensions = {mineral_a = {0.99, 1.0}, mineral_b = {0.99, 1.0}} },
-      tan        = { dimensions = {mineral_a = {0.99, 1.0}, mineral_b = {0.99, 1.0}} },
+      brown      = { dimensions = {mineral_a = {0.5, 1.0}, mineral_b = {0.0, 1.0}} },
+      tan        = { dimensions = {mineral_a = {0.0, 0.5}, mineral_b = {0.0, 1.0}} },
     },
     variants = {
       ["dirt-1"]   = { transition = "beach", group = "dirt", dimensions = {distribution_moisture = {0.99, 1.0}} },
@@ -18,7 +18,7 @@ return {
     }
   },
   vegetation = {
-    dimensions = { distribution_temperature = {0.0, 1.0}, distribution_moisture = {0.0, 1.0} },
+    dimensions = { distribution_temperature = {0.2, 0.8}, distribution_moisture = {0.0, 1.0} },
     axes = {
       green     = { dimensions = {vegetation_a = {0.0, 0.33}, vegetation_b = {0.0, 1.0}} },
       olive     = { dimensions = {vegetation_a = {0.33, 0.66}, vegetation_b = {0.0, 1.0}} },
@@ -32,7 +32,7 @@ return {
     }
   },
   frozen = {
-    dimensions = { distribution_temperature = {0.0, 0.01}},
+    dimensions = { distribution_temperature = {0.0, 0.2}},
     variants = {
       ["snow-0"]   = { transition = "cliff", group = "frozen", tags={"snow"} }, -- legacy powder
       ["snow-1"]   = { transition = "cliff", group = "frozen", tags={"snow"} }, -- powder

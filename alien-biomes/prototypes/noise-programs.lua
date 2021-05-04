@@ -79,61 +79,62 @@ local function make_multioctave_noise_function(seed0,seed1,octaves,octave_output
   end
 end
 
-local function generate_noise(minimum, maximum, x_offset, y_offset, unique_seed, x, y, title, map)
+local function generate_noise(minimum, maximum, range_multiplier, average_offset, x_offset, y_offset, unique_seed, x, y, title, map)
   local average = (maximum + minimum) / 2
-  local range = maximum - average
+  local range = (maximum - average) * range_multiplier
   --(seed0,seed1,octaves,octave_output_scale_multiplier = 2,octave_input_scale_multiplier = 1/2,output_scale0 = 1,input_scale0 = 1)
 
-  local noise_XL = 16 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
-    4, -- octaves
-    1.75, -- octave_output_scale_multiplier
+  local noise_XL = 16 * noise.clamp(make_multioctave_noise_function(map.seed, unique_seed + 1,
+    5, -- octaves
+    1, -- octave_output_scale_multiplier
     1, -- octave_input_scale_multiplier
     1, -- output_scale0
     1 -- input_scale0
-    )(x * 0.05, y * 0.05, 1/32, 1/20), -1, 1)
+    )(x * 0.05, y * 0.05, 1, 1), -1, 1)
 
-    local noise_L = 8 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
+    local noise_L = 8 * noise.clamp(make_multioctave_noise_function(map.seed, unique_seed + 2,
+    4, -- octaves
+    1, -- octave_output_scale_multiplier
+    1, -- octave_input_scale_multiplier
+    1, -- output_scale0
+    1 -- input_scale0
+    )(x * 0.1, y * 0.1, 1, 1), -1, 1)
+
+  local noise_M = 4 * noise.clamp(make_multioctave_noise_function(map.seed, unique_seed + 3,
     3, -- octaves
     1, -- octave_output_scale_multiplier
     1, -- octave_input_scale_multiplier
     1, -- output_scale0
     1 -- input_scale0
-    )(x * 0.1, y * 0.1, 1/32, 1/20), -1, 1)
+    )(x * 0.5, y *  0.5, 1, 1), -1, 1)
 
-  local noise_M = 4 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
+  local noise_S = 2 * noise.clamp(make_multioctave_noise_function(map.seed, unique_seed + 4,
     2, -- octaves
     1, -- octave_output_scale_multiplier
     1, -- octave_input_scale_multiplier
     1, -- output_scale0
     1 -- input_scale0
-    )(x * 0.5, y *  0.5, 1/32, 1/20), -1, 1)
+    )(x * 1, y *  1, 1, 1), -1, 1)
 
-  local noise_S = 2 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
+  local noise_XS = 1 * noise.clamp(make_multioctave_noise_function(map.seed, unique_seed + 5,
     1, -- octaves
     1, -- octave_output_scale_multiplier
     1, -- octave_input_scale_multiplier
     1, -- output_scale0
     1 -- input_scale0
-    )(x * 1, y *  1, 1/32, 1/20), -1, 1)
+    )(x * 2, y *  2, 1, 1), -1, 1)
 
-  local noise_XS = 1 * noise.clamp(make_multioctave_noise_function(map.seed, 5,
+    local base = average + average_offset + range * range_multiplier * noise.clamp(make_multioctave_noise_function(map.seed, unique_seed,
     1, -- octaves
     1, -- octave_output_scale_multiplier
     1, -- octave_input_scale_multiplier
     1, -- output_scale0
-    1 -- input_scale0
-    )(x * 2, y *  2, 1/32, 1/20), -1, 1)
+    15 -- input_scale0
+    )(x * 0.0035, y * 0.0035, 0.0035, 0.035), -1, 1)
 
-    local base = average + range * noise.clamp(0.25 * make_multioctave_noise_function(map.seed, 5,
-    6, -- octaves
-    1.75, -- octave_output_scale_multiplier
-    1, -- octave_input_scale_multiplier
-    1, -- output_scale0
-    1 -- input_scale0
-    )(x * 0.01, y * 0.01, 1/32, 1/20), -1, 1)
-    
   base = noise.clamp(base, minimum, maximum)
-  local combined = base + noise_XL + noise_L + noise_M + noise_S + noise_XS
+  --local combined = base + noise_XL + noise_L + noise_M + noise_S + noise_XS
+  local combined = base + noise_XL
   combined = noise.clamp(combined, minimum, maximum)
   return combined
 end
@@ -197,7 +198,8 @@ data:extend({
     intended_property = "temperature",
     expression = noise.define_noise_function( function(x,y,tile,map)
 
-      local temperature_noise = generate_noise(-50, 150, 30000, 0, 20, x, y, title, map)
+      -- local function generate_noise(minimum, maximum, range_multiplier, average_offset, x_offset, y_offset, unique_seed, x, y, title, map)
+      local temperature_noise = generate_noise(-50, 150, 3.625, -10, 30000, 0, 20, x, y, title, map)
       return temperature_noise
 
     end)
